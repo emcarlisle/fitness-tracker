@@ -51,4 +51,16 @@ router.put("/api/workouts/:id", ({ body, params }, res) => {
             res.json(err);
         });
 });
+
+router.delete("/api/workouts", ({ body }, res) => {
+    Workout.findOneAndDelete(body.id)
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
+
+module.exports = router;
     
